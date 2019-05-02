@@ -31,7 +31,7 @@ if __name__ == '__main__':
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = 0.01
+    tita_0 = 0.01  # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
     tita_v_0 = 0
     tita_a_0 = 0
 
