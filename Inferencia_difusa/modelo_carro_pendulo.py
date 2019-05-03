@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-from math import sin, cos, pow, pi, degrees
+from math import sin, cos, pow, pi
+from control_difuso import control_difuso as control
 
 
 def modelo(tita, dt):
@@ -21,17 +22,17 @@ def modelo(tita, dt):
 if __name__ == '__main__':
     # Datos
     g = 9.81
-    M = 2
-    m = 0.2
+    M = 0.2
+    m = 0.02
     l = 0.5
-    F = 0
+
     # Vectores para plotear
     vector_tita = []
     vector_tita_v = []
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = 0.01  # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
+    tita_0 = -3  # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
     tita_v_0 = 0
     tita_a_0 = 0
 
@@ -44,10 +45,12 @@ if __name__ == '__main__':
     #armo el estado inicial
     estado_act = [tita_0, tita_v_0, tita_a_0]
 
-    while t < 2000:
+    while t < 500:
         vector_tita.append(estado_act[0])
         vector_tita_v.append(estado_act[1])
         vector_tita_a.append(estado_act[2])
+
+        F = -control(estado_act)
 
         estado_act = modelo(estado_act, dt)
 
