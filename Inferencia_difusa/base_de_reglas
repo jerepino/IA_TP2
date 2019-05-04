@@ -1,0 +1,82 @@
+ # ------------------------------------------------------------
+ # -                 BASE DE REGLAS N° 1                      -
+ # ------------------------------------------------------------
+ Esta base obtuvo buenos resultado, pero tuve que invertir el
+ sentido de la F y ademas cuando la posicion es MP o MN se
+ queda atorado
+
+ # Fila 0: P is MN and
+    A_MN.append(AND(x[0], x[5]))  # V is MN # then F is MN
+    A_MN.append(AND(x[0], x[6]))  # V is N # then F is MN
+    A_MN.append(AND(x[0], x[7]))  # V is Z # then F is MN
+    A_MN.append(AND(x[0], x[8]))  # V is P # then F is MN
+    A_N.append(AND(x[0], x[9]))   # V is MP # then F is N
+
+    # Fila 1: P is N and
+    A_MP.append(AND(x[1], x[5]))  # V is MN # then F is MP
+    A_P.append(AND(x[1], x[6]))   # V is N # then F is P
+    A_P.append(AND(x[1], x[7]))   # V is Z # then F is P
+    A_P.append(AND(x[1], x[8]))   # V is P # then F is P
+    A_Z.append(AND(x[1], x[9]))   # V is MP # then F is Z
+
+    # Fila 2: P is Z and
+    A_MP.append(AND(x[2], x[5]))  # V is MN # then F is MP
+    A_P.append(AND(x[2], x[6]))   # V is N # then F is P
+    A_Z.append(AND(x[2], x[7]))   # V is Z # then F is Z
+    A_N.append(AND(x[2], x[8]))   # V is P # then F is N
+    A_MN.append(AND(x[2], x[9]))  # V is MP # then F is MN
+
+    # Fila 3: P is P and
+    A_MN.append(AND(x[3], x[5]))  # V is MN # then F is MN
+    A_N.append(AND(x[3], x[6]))   # V is N # then F is N
+    A_N.append(AND(x[3], x[7]))   # V is Z # then F is N
+    A_N.append(AND(x[3], x[8]))   # V is P # then F is N
+    A_Z.append(AND(x[3], x[9]))   # V is MP # then F is Z
+
+    # Fila 4: P is MP and
+    A_MP.append(AND(x[4], x[5]))  # V is MN # then F is MP
+    A_MP.append(AND(x[4], x[6]))  # V is N # then F is MP
+    A_MP.append(AND(x[4], x[7]))  # V is Z # then F is MP
+    A_MP.append(AND(x[4], x[8]))  # V is P # then F is MP
+    A_P.append(AND(x[4], x[9]))   # V is MP # then F is P
+
+ # ------------------------------------------------------------
+ # -                 BASE DE REGLAS N° 2                      -
+ # ------------------------------------------------------------
+ Esta base obtuvo mucho mejores resultados y se corrigio el
+ sentido de la fuerza y ya no se queda atorado
+
+# Fila 0: P is MN and
+    A_MP.append(AND(x[0], x[5]))  # V is MN # then F is MP
+    A_MP.append(AND(x[0], x[6]))  # V is N # then F is MP
+    A_MP.append(AND(x[0], x[7]))  # V is Z # then F is MP
+    A_MP.append(AND(x[0], x[8]))  # V is P # then F is MP
+    A_MP.append(AND(x[0], x[9]))  # V is MP # then F is MP
+
+    # Fila 1: P is N and
+    A_MN.append(AND(x[1], x[5]))  # V is MN # then F is MN
+    A_MN.append(AND(x[1], x[6]))  # V is N # then F is MN
+    A_N.append(AND(x[1], x[7]))   # V is Z # then F is N
+    A_N.append(AND(x[1], x[8]))   # V is P # then F is N
+    A_N.append(AND(x[1], x[9]))   # V is MP # then F is N
+
+    # Fila 2: P is Z and
+    A_MN.append(AND(x[2], x[5]))  # V is MN # then F is MN
+    A_N.append(AND(x[2], x[6]))   # V is N # then F is N
+    A_Z.append(AND(x[2], x[7]))   # V is Z # then F is Z
+    A_P.append(AND(x[2], x[8]))   # V is P # then F is P
+    A_MP.append(AND(x[2], x[9]))  # V is MP # then F is MP
+
+    # Fila 3: P is P and
+    A_P.append(AND(x[3], x[5]))   # V is MN # then F is P
+    A_P.append(AND(x[3], x[6]))   # V is N # then F is P
+    A_P.append(AND(x[3], x[7]))   # V is Z # then F is P
+    A_MP.append(AND(x[3], x[8]))  # V is P # then F is MP
+    A_MP.append(AND(x[3], x[9]))  # V is MP # then F is MP
+
+    # Fila 4: P is MP and
+    A_MN.append(AND(x[4], x[5]))  # V is MN # then F is MN
+    A_MN.append(AND(x[4], x[6]))  # V is N # then F is MN
+    A_MN.append(AND(x[4], x[7]))  # V is Z # then F is MN
+    A_MN.append(AND(x[4], x[8]))  # V is P # then F is MN
+    A_MN.append(AND(x[4], x[9]))  # V is MP # then F is MN

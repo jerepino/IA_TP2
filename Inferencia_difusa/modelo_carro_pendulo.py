@@ -32,8 +32,8 @@ if __name__ == '__main__':
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = -3  # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
-    tita_v_0 = 0
+    tita_0 = 3*pi/4 # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
+    tita_v_0 = -1
     tita_a_0 = 0
 
 
@@ -45,12 +45,12 @@ if __name__ == '__main__':
     #armo el estado inicial
     estado_act = [tita_0, tita_v_0, tita_a_0]
 
-    while t < 500:
+    while t < 200:
         vector_tita.append(estado_act[0])
         vector_tita_v.append(estado_act[1])
         vector_tita_a.append(estado_act[2])
 
-        F = -control(estado_act)
+        F = control(estado_act)
 
         estado_act = modelo(estado_act, dt)
 
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     a2.legend()
 
-    a3.set_xlabel('Tiempo')
+    a3.set_xlabel('Tiempo [ms]')
 
     a3.set_ylabel('Aceleracion [rad/s²]')
 

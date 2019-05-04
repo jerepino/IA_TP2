@@ -67,8 +67,8 @@ if __name__ == '__main__':
     OR = union
     disyuncion = union
     #-------------------------------------------
-    ang = 2
-    sol = 0.2
+    ang = 0.175
+    sol = 0.4
     x = []
     pos_MN = []
     pos_N = []
@@ -77,16 +77,16 @@ if __name__ == '__main__':
     pos_MP = []
 
 
-    sup_pos_MN = [-11, -5]
-    sup_pos_N = [-7, -1]
-    sup_pos_Z = [-3, 3]
-    sup_pos_P = [1, 7]
-    sup_pos_MP = [5, 11]
-    med_pos_N = (sup_pos_N[1] + sup_pos_N[0]) * 0.7 / 2 #el porsentaje mueve la punta: %>1 ->  %<1 <-
-    med_pos_P = (sup_pos_P[1] + sup_pos_P[0]) * 0.7 / 2
+    sup_pos_MN = [-pi, -pi / 2]
+    sup_pos_N = [-(1 + sol) * pi / 2, -ang * sol]
+    sup_pos_Z = [-ang, ang]
+    sup_pos_P = [sol * ang, (1 + sol) * pi / 2]
+    sup_pos_MP = [pi / 2, pi]
+    med_pos_N = (sup_pos_N[1] + sup_pos_N[0]) * 0.3 / 2 #el porsentaje mueve la punta: %>1 ->  %<1 <-
+    med_pos_P = (sup_pos_P[1] + sup_pos_P[0]) * 0.3 / 2
     m_ = []
     ma_ = []
-    for j in arange(-15, 15, 0.001):
+    for j in arange(-pi, pi, 0.001):
         x.append(j)
         pos_MN.append(membership(j, sup_pos_MN))
         pos_N.append(membership(j, sup_pos_N, med_pos_N))
