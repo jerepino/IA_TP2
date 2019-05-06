@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from math import sin, cos, pow, pi
 from control_difuso import control_difuso as control
+import os
 
 
 def modelo(tita, dt):
@@ -32,20 +33,20 @@ if __name__ == '__main__':
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = 3*pi/4 # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
-    tita_v_0 = -1
+    tita_0 = -2 # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
+    tita_v_0 = 5
     tita_a_0 = 0
 
 
     # definicion del tiempo
     t = 0 #tiempo inicial
-    dt = 0.001 #paso
+    dt = 0.01 #paso
     tiempo = []
 
     #armo el estado inicial
     estado_act = [tita_0, tita_v_0, tita_a_0]
 
-    while t < 200:
+    while t < 5:
         vector_tita.append(estado_act[0])
         vector_tita_v.append(estado_act[1])
         vector_tita_a.append(estado_act[2])
@@ -84,3 +85,22 @@ if __name__ == '__main__':
     a3.legend()
 
     plt.show()
+
+
+    print(len(tiempo))
+    for point in range(0, len(tiempo), 1):
+        plt.figure()
+        plt.plot(l * sin(vector_tita[point]), l * cos(vector_tita[point]), 'bo', markersize=20)
+        plt.plot([0, l * sin(vector_tita[point])], [0, l * cos(vector_tita[point])])
+        plt.xlim(-l-0.5, l+0.5)
+        plt.ylim(-l-0.5, l+0.5)
+        plt.xlabel('x-direction')
+        plt.ylabel('y-direction')
+        filenumber = point
+        filenumber=format(filenumber, "05")
+        filename="image{}.png".format(filenumber)
+        plt.savefig(filename)
+        plt.close()
+
+    os.system("ffmpeg -f image2 -r 25 -i image%05d.png -vcodec mpeg4 -y movie.avi")
+
