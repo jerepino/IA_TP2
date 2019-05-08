@@ -29,7 +29,7 @@ def support():
 
     # Defino soportes para la posicion
     sup_pos = []
-    ang = 0.175  # limite para el soporte de Z
+    ang = 0.02  # limite para el soporte de Z
     sol = 0.4
     sup_pos.append([-pi-0.1, -pi / 2])                      # pos_sup_MN
     sup_pos.append([-(1 + sol) * pi / 2, -ang * sol])   # pos_sup_N
@@ -165,7 +165,7 @@ def desborrosificador(f):
     :param f:
     :return num / den:
     """
-    s_f = [3*[-11, -5], 3*[-7, -1], 3*[-3, 3], 3*[1, 7], 3*[5, 11]]
+    s_f = [[-11, -5], [-7, -1], [-2, 2], [1, 7], [5, 11]]
 
     num = 0
     den = 0
