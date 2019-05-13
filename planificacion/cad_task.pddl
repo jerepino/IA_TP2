@@ -1,21 +1,42 @@
 (define (problem cad_1_p)
   (:domain cad_1)
-  (:objects a1 - fresado
-            a2 - agujereado
-            b1 b2 b3 - broca
-            cf1 cf2 cf3 - cabezaFresa
-            p1 - pieza
-            ta - taladro
-            fre - fresa
-            ar - armario
+  (:objects fr_lat - fr_l
+            fr_ce_ex - fr_c_e
+            fr_ce_int - fr_c_i
+            ag_gr - ag_g
+            ag_med - ag_m
+            ag_ch - ag_c
+            broca1 broca2 broca3 - broca
+            herr_f1 herr_f2 herr_f3 - cabezaFresa
+            pieza1 - pieza
+            taladro1 - taladro
+            fresa1 - fresa
+            armario1 - armario
+            v - vertical
+            hor - horizontal
+            ch - chico
+            med - mediano
+            gra - grande
   )
-  (:init (En ar p1)
-         (En ar b1)
-         (En ar b2)
-         (En ar b3)
-         (En ar cf1)
-         (En ar cf2)
-         (En ar cf3)
+  (:init (En armario1 pieza1)
+         (En armario1 broca1)
+         (En armario1 broca2)
+         (En armario1 broca3)
+         (En armario1 herr_f1)
+         (En armario1 herr_f2)
+         (En armario1 herr_f3)
+         (Tamanio_herr herr_f1 ch)
+         (Tamanio_herr herr_f2 med)
+         (Tamanio_herr herr_f3 gra)
+         (Tamanio_herr broca1 ch)
+         (Tamanio_herr broca2 med)
+         (Tamanio_herr broca3 gra)
+         (Posicion_vertical p v)
   )
-  (:goal (and (Aplicado p1 a1) (Aplicado p1 a2)))
+  (:goal (and (Aplicado pieza1 fr_lat)
+              (Aplicado pieza1 fr_ce_ex)
+              (Aplicado pieza1 fr_ce_int)
+              (Aplicado pieza1 ag_gr)
+              (Aplicado pieza1 ag_med)
+              (Aplicado pieza1 ag_ch)))
 )

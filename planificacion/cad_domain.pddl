@@ -3,34 +3,78 @@
   (:types pieza  herramientas - objeto
           broca cabezaFresa - herramientas
           taladro armario fresa - maquinas
-          agujereado fresado - caracteristica
+          ag_g ag_m ag_c fr_l fr_c_e fr_c_i - caracteristica
+          vertical horizontal - orientacion
+          grande mediano chico - tamanio
   )
 
   (:predicates (En ?m - maquinas ?o - objeto)
                (Aplicado ?p - pieza ?ac - caracteristica)
+               (Posicion_vertical ?p - pieza ?v - vertical)
+               (Posicion_horizontal ?p - pieza ?hor - horizontal)
+               (Tamanio_herr ?h - herramientas ?t - tamanio)
   )
 
-  (:action colocar_en_maquina
-         :parameters(?m ?a - maquinas ?h - objeto)
+  (:action colocar_en_
+         :parameters(?h - objeto ?m ?a - maquinas)
          :precondition (En ?a ?h)
          :effect (and (En ?m ?h) (not (En ?a ?h)) )
   )
 
-  (:action quitar_de_maquina
-         :parameters (?m ?a - maquinas ?h - objeto)
+  (:action quitar_de_
+         :parameters (?h - objeto ?m ?a - maquinas)
          :precondition (En ?m ?h)
          :effect (and (En ?a ?h) (not (En ?m ?h)))
   )
 
-  (:action fresar_pieza
-         :parameters (?m - fresa ?h - cabezaFresa ?p - pieza ?ac - fresado)
-         :precondition (and (En ?m ?h) (En ?m ?p))
+  (:action parar_pieza
+         :parameters (?p - pieza ?a - armario ?v - vertical ?hor - horizontal)
+         :precondition (En ?a ?p)
+         :effect (and (Posicion_vertical ?p ?v) (not (Posicion_horizontal ?p ?hor))  )
+  )
+  (:action acostar_pieza
+         :parameters (?p - pieza ?a - armario ?v - vertical ?hor - horizontal)
+         :precondition (En ?a ?p)
+         :effect (and (Posicion_horizontal ?p ?hor) (not (Posicion_vertical ?p ?v))  )
+  )
+
+  (:action fresar_lateral_pieza
+         :parameters (?p - pieza ?m - fresa ?h - cabezaFresa ?ac - fr_l ?v - vertical ?g - grande)
+         :precondition (and (En ?m ?h) (En ?m ?p) (Posicion_vertical ?p ?v) (Tamanio_herr ?h ?g))
          :effect (Aplicado ?p ?ac)
   )
 
-  (:action agujerear_pieza
-         :parameters (?t - taladro ?b - broca ?p - pieza ?ac - agujereado)
-         :precondition (and (En ?t ?b) (En ?t ?p))
+  (:action fresar_central_exterior_pieza
+         :parameters (?p - pieza ?m - fresa ?h - cabezaFresa ?ac - fr_c_e ?v - vertical ?med - mediano)
+         :precondition (and (En ?m ?h) (En ?m ?p) (Posicion_vertical ?p ?v) (Tamanio_herr ?h ?med))
          :effect (Aplicado ?p ?ac)
   )
+
+  (:action fresar_central_interior_pieza
+         :parameters (?p - pieza ?m - fresa ?h - cabezaFresa ?ac - fr_c_i ?v - vertical ?ch - chico)
+         :precondition (and (En ?m ?h) (En ?m ?p) (Posicion_vertical ?p ?v) (Tamanio_herr ?h ?ch))
+         :effect (Aplicado ?p ?ac)
+  )
+
+  (:action agujerear_G_pieza
+         :parameters (?p - pieza ?t - taladro ?b - broca ?ac - ag_g ?v - vertical ?g - grande)
+         :precondition (and (En ?t ?b) (En ?t ?p) (Posicion_vertical ?p ?v) (Tamanio_herr ?b ?g))
+         :effect (Aplicado ?p ?ac)
+  )
+
+  (:action agujerear_M_pieza
+         :parameters (?p - pieza ?t - taladro ?b - broca ?ac - ag_m ?h - horizontal ?med - mediano)
+         :precondition (and (En ?t ?b) (En ?t ?p) (Posicion_horizontal ?p ?h) (Tamanio_herr ?b ?med))
+         :effect (Aplicado ?p ?ac)
+  )
+
+  (:action agujerear_C_pieza
+         :parameters (?p - pieza ?t - taladro ?b - broca ?ac - ag_c ?v - vertical ?ch - chico)
+         :precondition (and (En ?t ?b) (En ?t ?p) (Posicion_vertical ?p ?v) (Tamanio_herr ?b ?ch))
+         :effect (Aplicado ?p ?ac)
+  )
+
+
+
+
 )
