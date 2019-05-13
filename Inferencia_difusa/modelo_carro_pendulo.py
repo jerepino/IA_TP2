@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
     a2.legend()
 
-    a3.set_xlabel('Tiempo [ms]')
+    a3.set_xlabel('Tiempo [s]')
 
     a3.set_ylabel('Aceleracion [rad/s²]')
 
