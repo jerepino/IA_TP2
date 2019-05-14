@@ -162,8 +162,8 @@ def motor_inferencia(x):
 def desborrosificador(f):
     """
     Desborrosificador por media de centros (Weighted Average)
-    :param f:
-    :return num / den:
+    :param f: Son los valores del conjunto de salida fuerza
+    :return num / den: devuelve el valor nitido
     """
     s_f = [[-11, -5], [-7, -1], [-2, 2], [1, 7], [5, 11]]
 
@@ -187,18 +187,3 @@ def control_difuso(x):
     b = motor_inferencia(a)
     c = desborrosificador(b)
     return c
-
-
-# if __name__ == '__main__':
-#     h = support()
-#     print(h[0])
-#     print(h[0][0], h[0][1])
-#     m = borrosificador([pi/2, 0])
-#     print("pertenencia de los valores -1, 1")
-#     print(m)
-#     g = motor_inferencia(m)
-#     print('salida del motor de inferencia F')
-#     print(g)
-#     fin = desborrosificador(g)
-#     print("el valor es")
-#     print(fin)
