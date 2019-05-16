@@ -47,13 +47,13 @@
 
   (:action parar_pieza
          :parameters (?p - pieza ?a - armario ?v - vertical ?hor - horizontal)
-         :precondition (En ?a ?p)
+         :precondition (and (En ?a ?p) (Posicion_horizontal ?p ?hor))
          :effect (and (Posicion_vertical ?p ?v) (not (Posicion_horizontal ?p ?hor))  )
   )
 
   (:action acostar_pieza
          :parameters (?p - pieza ?a - armario ?v - vertical ?hor - horizontal)
-         :precondition (En ?a ?p)
+         :precondition (and (En ?a ?p) (Posicion_vertical ?p ?v))
          :effect (and (Posicion_horizontal ?p ?hor) (not (Posicion_vertical ?p ?v))  )
   )
 

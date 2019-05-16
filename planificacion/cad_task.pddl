@@ -31,7 +31,7 @@
          (Tamanio_herr broca1 ch)
          (Tamanio_herr broca2 med)
          (Tamanio_herr broca3 gra)
-         (Posicion_vertical p v)
+         (Posicion_vertical pieza1 v)
          (No_usada fresa1)
          (No_usada taladro1)
   )
