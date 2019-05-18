@@ -17,7 +17,6 @@ espesor(juntas,30).
 elementos(valvulaSeguridad).
 elementos(juntas).
 elementos(tuberias).
-
 %Lista de estados
 estado([oxidado,deslumbrante,buenEstado]).
 
@@ -111,6 +110,8 @@ estadoSensores(bloqueados).
 presionGas(30). %NOMINAL
 :-dynamic(estadoSensoresPresion/1).
 estadoSensoresPresion(bloqueados).
+:-dynamic(estadoResorteValvula/1).
+estadoResorteValvula(esEficiente).
 
 
 verificaEvacuacion(X):- X==si, write('Por favor, consulte si la presion de la linea de gas es la apropiada!'),!.
@@ -154,8 +155,12 @@ cambiarEstadoSensores:- write('Desbloquee los sensores: '),read(Estado),
 
 %---------------------------------------------
 
-consultarResorteValvula(X):- X=='esEficiente', write('Por favor, consulte si existe prevencion adecuada de fugas entre el asiento y el orificio!'),!.
-consultarResorteValvula(X):- X=='noesEficiente', write('Solicite de inmediato un "service"'),!.
+consultarResorteValvula(X):- estadoResorteValvula(X), X=='esEficiente', write('Por favor, consulte si existe prevencion adecuada de fugas entre el asiento y el orificio!'),!.
+consultarResorteValvula(X):- estadoResorteValvula(X), X=='noesEficiente', write('Solicite de inmediato un "service"'),!.
+cambiarResorteValvula:- write('Indique estado Resorte de Valvula (esEficiente - noesEficiente): '),read(Estado),
+                       %Cambio el GroundFact
+                       retract(estadoResorteValvula(Anterior)),
+                       assert(estadoResorteValvula(Estado)).
 
 %---------------------------------------------
 

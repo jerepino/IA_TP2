@@ -45,7 +45,7 @@ def support():
     sup_vel.append([-15, -9])                       # vel_sup_MN
     sup_vel.append([-(1 + sol) * 9, -vel_z * sol])  # vel_sup_N
     sup_vel.append([-vel_z, vel_z])                 # vel_sup_Z
-    sup_vel.append([vel_z * ang, (1 + sol) * 9])    # vel_sup_P
+    sup_vel.append([vel_z * sol, (1 + sol) * 9])    # vel_sup_P
     sup_vel.append([9, 15])                         # vel_sup_MP
 
     return sup_pos + sup_vel
@@ -65,8 +65,8 @@ def borrosificador(x):
     med_pos_N = (sup[1][1] + sup[1][0]) * 0.3 / 2
     med_pos_P = (sup[3][1] + sup[3][0]) * 0.3 / 2
 
-    med_vel_N = (sup[6][1] + sup[6][1]) * 0.7 / 2
-    med_vel_P = (sup[8][1] + sup[8][1]) * 0.7 / 2
+    med_vel_N = (sup[6][1] + sup[6][0]) * 0.7 / 2
+    med_vel_P = (sup[8][1] + sup[8][0]) * 0.7 / 2
 
     # -------------------------------------------------
     # -   VALORES DE LA PARTICION BORROSA POSICION    -
