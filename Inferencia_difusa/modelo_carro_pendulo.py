@@ -33,8 +33,8 @@ if __name__ == '__main__':
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = pi/2    # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
-    tita_v_0 = 0
+    tita_0 = pi/4   # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
+    tita_v_0 = pi/5
     numerador = g * sin(tita_0) + cos(tita_0) * (- m * l * pow(tita_v_0, 2) * sin(tita_0)) / (M + m)
     denominador = l * (4 / 3 - m * pow(cos(tita_0), 2) / (M + m))
     tita_a_0 = numerador / denominador
@@ -89,23 +89,23 @@ if __name__ == '__main__':
     plt.show()
 
 
-    t=0
-    for point in range(0, len(tiempo), 1):
-        plt.figure()
-        plt.plot(l * sin(vector_tita[point]), l * cos(vector_tita[point]), 'bo', markersize=20)
-        plt.plot([0, l * sin(vector_tita[point])], [0, l * cos(vector_tita[point])])
-        plt.xlim(-l-0.5, l+0.5)
-        plt.ylim(-l-0.5, l+0.5)
-        plt.xlabel('x-direction')
-        plt.ylabel('y-direction')
-        filenumber = point
-        filenumber=format(filenumber, "05")
-        filename="image{}.png".format(filenumber)
-        plt.savefig(filename)
-        plt.close()
-        if t > 2:
-            break
-        t += dt
-
-    os.system("ffmpeg -f image2 -r 25 -i image%05d.png -vcodec mpeg4 -y movie.avi")
-
+    # t=0
+    # for point in range(0, len(tiempo), 1):
+    #     plt.figure()
+    #     plt.plot(l * sin(vector_tita[point]), l * cos(vector_tita[point]), 'bo', markersize=20)
+    #     plt.plot([0, l * sin(vector_tita[point])], [0, l * cos(vector_tita[point])])
+    #     plt.xlim(-l-0.5, l+0.5)
+    #     plt.ylim(-l-0.5, l+0.5)
+    #     plt.xlabel('x-direction')
+    #     plt.ylabel('y-direction')
+    #     filenumber = point
+    #     filenumber=format(filenumber, "05")
+    #     filename="image{}.png".format(filenumber)
+    #     plt.savefig(filename)
+    #     plt.close()
+    #     if t > 2:
+    #         break
+    #     t += dt
+    #
+    # os.system("ffmpeg -f image2 -r 25 -i image%05d.png -vcodec mpeg4 -y movie.avi")
+    #

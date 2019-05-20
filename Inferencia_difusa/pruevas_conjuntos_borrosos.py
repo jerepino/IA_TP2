@@ -2,12 +2,13 @@ from matplotlib import pyplot as plt
 from math import pi
 from numpy import arange
 
-def membership(x, x_, x_med=0):
+def membership(x, x_, x_med=0, fin=0):
     """
     Funcion usada para calcular en grado de pertenencia a un conjunto borroso
     :param x: absisas, universo del discurso
     :param x_: vector, extremos del soporte
     :param x_med: punto medio (punto para el cual la pertenencia es maxima (1))
+    :param fin: variable para saber si queda en 1 o 0 el valor del conjunto borroso
     :return y: ordenadas o grado de pertenencia
     """
     y = [0, 1]  # Valor minimo y maximo de pertenencia
@@ -19,6 +20,12 @@ def membership(x, x_, x_med=0):
         y_ = (y[0] - y[1]) * (x - x_med) / (x_[1] - x_med) + y[1]
     else:
         y_ = 0
+
+    if fin == -1 and x < x_med:
+        y_ = 1
+    elif fin == 1 and x > x_med:
+        y_ = 1
+
     return y_
 
 
@@ -106,11 +113,11 @@ if __name__ == '__main__':
 
     for j in arange(-pi-0.5, pi+0.5, 0.001):
         x.append(j)
-        pos_MN.append(membership(j, sup_pos[0]))
+        pos_MN.append(membership(j, sup_pos[0], 0, -1))
         pos_N.append(membership(j, sup_pos[1], med_pos_N))
         pos_Z.append(membership(j, sup_pos[2]))
         pos_P.append(membership(j, sup_pos[3], med_pos_P))
-        pos_MP.append(membership(j, sup_pos[4]))
+        pos_MP.append(membership(j, sup_pos[4], 0, 1))
 
     vel_MN = []
     vel_N = []
@@ -120,11 +127,11 @@ if __name__ == '__main__':
     y = []
     for j in arange(-15-1, 15+1, 0.001):
         y.append(j)
-        vel_MN.append(membership(j, sup_vel[0]))
+        vel_MN.append(membership(j, sup_vel[0], 0, -1))
         vel_N.append(membership(j, sup_vel[1], med_vel_N))
         vel_Z.append(membership(j, sup_vel[2]))
         vel_P.append(membership(j, sup_vel[3], med_vel_P))
-        vel_MP.append(membership(j, sup_vel[4]))
+        vel_MP.append(membership(j, sup_vel[4], 0, 1))
 
     s_f = [[-11, -5], [-7, -1], [-2, 2], [1, 7], [5, 11]]
     F_MN = []
@@ -135,11 +142,11 @@ if __name__ == '__main__':
     z = []
     for j in arange(-11, 11, 0.001):
         z.append(j)
-        F_MN.append(membership(j, s_f[0]))
+        F_MN.append(membership(j, s_f[0], 0, -1))
         F_N.append(membership(j, s_f[1]))
         F_Z.append(membership(j, s_f[2]))
         F_P.append(membership(j, s_f[3]))
-        F_MP.append(membership(j, s_f[4]))
+        F_MP.append(membership(j, s_f[4], 0, 1))
 
     plt.figure(1)
     plt.plot(x, pos_MN, x, pos_N, x, pos_Z, x, pos_P, x, pos_MP)

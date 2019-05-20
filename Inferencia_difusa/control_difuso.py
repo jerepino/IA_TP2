@@ -1,23 +1,30 @@
 from math import pi
 
 
-def membership(x, x_, x_med=0.0):
+def membership(x, x_, x_med=0, fin=0):
     """
     Funcion usada para calcular en grado de pertenencia a un conjunto borroso
-    :param x: absisas, cualquier valor del universo del discurso
+    :param x: absisas, universo del discurso
     :param x_: vector, extremos del soporte
     :param x_med: punto medio (punto para el cual la pertenencia es maxima (1))
+    :param fin: variable para saber si queda en 1 o 0 el valor del conjunto borroso
     :return y: ordenadas o grado de pertenencia
     """
     y = [0, 1]  # Valor minimo y maximo de pertenencia
     if x_med == 0:
         x_med = (x_[0] + x_[1]) / 2
     if x_[0] <= x <= x_med:  # p_1 = [x_i, 0] , p_2 = [x_med, 1]
-        y_ = (y[1]-y[0]) * (x - x_[0]) / (x_med - x_[0]) + y[0]
+        y_ = (y[1] - y[0]) * (x - x_[0]) / (x_med - x_[0]) + y[0]
     elif x_med < x <= x_[1]:  # p_1 = [x_med, 1] , p_2 = [x_f, 0]
         y_ = (y[0] - y[1]) * (x - x_med) / (x_[1] - x_med) + y[1]
     else:
         y_ = 0
+
+    if fin == -1 and x < x_med:
+        y_ = 1
+    elif fin == 1 and x > x_med:
+        y_ = 1
+
     return y_
 
 
@@ -72,21 +79,21 @@ def borrosificador(x):
     # -   VALORES DE LA PARTICION BORROSA POSICION    -
     # -------------------------------------------------
 
-    pos.append(membership(x[0], sup[0]))
+    pos.append(membership(x[0], sup[0], 0, -1))
     pos.append(membership(x[0], sup[1], med_pos_N))
     pos.append(membership(x[0], sup[2]))
     pos.append(membership(x[0], sup[3], med_pos_P))
-    pos.append(membership(x[0], sup[4]))
+    pos.append(membership(x[0], sup[4], 0, 1))
 
     # -------------------------------------------------
     # -   VALORES DE LA PARTICION BORROSA VELOCIDAD   -
     # -------------------------------------------------
 
-    vel.append(membership(x[1], sup[5]))
+    vel.append(membership(x[1], sup[5], 0, -1))
     vel.append(membership(x[1], sup[6], med_vel_N))
     vel.append(membership(x[1], sup[7]))
     vel.append(membership(x[1], sup[8], med_vel_P))
-    vel.append(membership(x[1], sup[9]))
+    vel.append(membership(x[1], sup[9], 0, 1))
 
     return pos + vel
 
