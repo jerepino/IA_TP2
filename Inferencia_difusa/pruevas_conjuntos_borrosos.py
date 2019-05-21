@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 from math import pi
 from numpy import arange
 
+
 def membership(x, x_, x_med=0, fin=0):
     """
     Funcion usada para calcular en grado de pertenencia a un conjunto borroso
@@ -11,22 +12,18 @@ def membership(x, x_, x_med=0, fin=0):
     :param fin: variable para saber si queda en 1 o 0 el valor del conjunto borroso
     :return y: ordenadas o grado de pertenencia
     """
-    y = [0, 1]  # Valor minimo y maximo de pertenencia
+    # y = [0, 1]  # Valor minimo y maximo de pertenencia
     if x_med == 0:
         x_med = (x_[0] + x_[1]) / 2
+    if (fin == -1 and x < x_med) or (fin == 1 and x > x_med):
+        return 1
+
     if x_[0] <= x <= x_med:  # p_1 = [x_i, 0] , p_2 = [x_med, 1]
-        y_ = (y[1]-y[0]) * (x - x_[0]) / (x_med - x_[0]) + y[0]
+        return (x - x_[0]) / (x_med - x_[0])
     elif x_med < x <= x_[1]:  # p_1 = [x_med, 1] , p_2 = [x_f, 0]
-        y_ = (y[0] - y[1]) * (x - x_med) / (x_[1] - x_med) + y[1]
-    else:
-        y_ = 0
+        return (x_[1] - x) / (x_[1] - x_med)
 
-    if fin == -1 and x < x_med:
-        y_ = 1
-    elif fin == 1 and x > x_med:
-        y_ = 1
-
-    return y_
+    return 0
 
 
 def complemento(u_a):
