@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # Estado inicial
 
     tita_0 = pi/4   # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
-    tita_v_0 = 0.1
+    tita_v_0 = 0
     numerador = g * sin(tita_0) + cos(tita_0) * (- m * l * pow(tita_v_0, 2) * sin(tita_0)) / (M + m)
     denominador = l * (4 / 3 - m * pow(cos(tita_0), 2) / (M + m))
     tita_a_0 = numerador / denominador

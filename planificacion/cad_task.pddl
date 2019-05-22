@@ -1,11 +1,11 @@
 (define (problem cad_1_p)
   (:domain cad_1)
-  (:objects fr_lat - fr_l
+  (:objects fr_lat1 fr_lat2 - fr_l
             fr_ce_ex - fr_c_e
             fr_ce_int - fr_c_i
             ag_gr - ag_g
-            ag_med - ag_m
-            ag_ch - ag_c
+            ag_med1 ag_med2 - ag_m
+            ag_ch1 ag_ch2 - ag_c
             broca1 broca2 broca3 - broca
             herr_f1 herr_f2 herr_f3 - cabezaFresa
             pieza1 - pieza
@@ -35,11 +35,14 @@
          (No_usada fresa1)
          (No_usada taladro1)
   )
-  (:goal (and (Aplicado pieza1 fr_lat)
+  (:goal (and (Aplicado pieza1 fr_lat1)
+              (Aplicado pieza1 fr_lat2)
               (Aplicado pieza1 fr_ce_ex)
               (Aplicado pieza1 fr_ce_int)
               (Aplicado pieza1 ag_gr)
-              (Aplicado pieza1 ag_med)
-              (Aplicado pieza1 ag_ch))
+              (Aplicado pieza1 ag_med1)
+              (Aplicado pieza1 ag_med2)
+              (Aplicado pieza1 ag_ch1)
+              (Aplicado pieza1 ag_ch2))
   )
 )
