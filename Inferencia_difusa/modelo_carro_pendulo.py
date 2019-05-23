@@ -43,7 +43,7 @@ if __name__ == '__main__':
     t = 0  # tiempo inicial
     dt = 0.01  # paso
     tiempo = []
-    F=0
+
     # armo el estado inicial
     estado_act = [tita_0, tita_v_0, tita_a_0]
     f_ = []
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         vector_tita_v.append(estado_act[1])
         vector_tita_a.append(estado_act[2])
 
-        # F = control(estado_act)
+        F = control(estado_act)
         f_.append(F)
         estado_act = modelo(estado_act, dt)
 
