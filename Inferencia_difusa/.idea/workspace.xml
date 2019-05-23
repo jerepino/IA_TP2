@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10e47048-3616-4e09-8643-64748a8882d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/modelo_carro_pendulo.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelo_carro_pendulo.py" afterDir="false" />
-    </list>
+    <list default="true" id="10e47048-3616-4e09-8643-64748a8882d7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +10,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelo_carro_pendulo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="822">
               <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -24,10 +22,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/control_difuso.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
+            <state relative-caret-position="573">
               <caret line="175" column="16" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="16" />
             </state>
           </provider>
@@ -287,13 +285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control_difuso.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="175" column="16" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/base_de_reglas">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1063">
@@ -303,11 +294,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modelo_carro_pendulo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="822">
           <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control_difuso.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="175" column="16" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="16" />
         </state>
       </provider>
     </entry>
