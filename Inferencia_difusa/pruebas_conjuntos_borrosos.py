@@ -12,14 +12,17 @@ def membership(x, x_, x_med=0, fin=0):
     :return y: ordenadas o grado de pertenencia
     """
     # y = [0, 1]  # Valor minimo y maximo de pertenencia
+
+
     if x_med == 0:
         x_med = (x_[0] + x_[1]) / 2
+    if (fin == -1 and x < x_med) or (fin == 1 and x > x_med):
+        return 1
     if x_[0] <= x <= x_med:  # p_1 = [x_i, 0] , p_2 = [x_med, 1]
         return (x - x_[0]) / (x_med - x_[0])
     elif x_med < x <= x_[1]:  # p_1 = [x_med, 1] , p_2 = [x_f, 0]
-       return (x[1] - x) / (x_[1] - x_med)
-    if (fin == -1 and x < x_med) or (fin == 1 and x > x_med):
-        return 1
+       return (x_[1] - x) / (x_[1] - x_med)
+
     return 0
 
 

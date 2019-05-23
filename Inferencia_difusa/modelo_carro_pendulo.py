@@ -33,19 +33,18 @@ if __name__ == '__main__':
     vector_tita_a = []
     # Estado inicial
 
-    tita_0 = pi/4   # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido orario y mas negatico) (+, sentido antihorario y positivo)
+    tita_0 = pi/2   # Segun la posicion inicial que utilizo es para donde mido el angulo (-,sentido horario y mas negatico) (+, sentido antihorario y positivo)
     tita_v_0 = 0
     numerador = g * sin(tita_0) + cos(tita_0) * (- m * l * pow(tita_v_0, 2) * sin(tita_0)) / (M + m)
     denominador = l * (4 / 3 - m * pow(cos(tita_0), 2) / (M + m))
     tita_a_0 = numerador / denominador
 
-
     # definicion del tiempo
-    t = 0 #tiempo inicial
-    dt = 0.01 #paso
+    t = 0  # tiempo inicial
+    dt = 0.01  # paso
     tiempo = []
-
-    #armo el estado inicial
+    F=0
+    # armo el estado inicial
     estado_act = [tita_0, tita_v_0, tita_a_0]
     f_ = []
     while t < 5:
@@ -53,14 +52,14 @@ if __name__ == '__main__':
         vector_tita_v.append(estado_act[1])
         vector_tita_a.append(estado_act[2])
 
-        F = control(estado_act)
+        # F = control(estado_act)
         f_.append(F)
         estado_act = modelo(estado_act, dt)
 
         tiempo.append(t)
         t += dt
 
-    #Ploteo los resultados
+    # Ploteo los resultados
 
     fig, (a1, a2, a3) = plt.subplots(3, 1)
 
@@ -90,7 +89,6 @@ if __name__ == '__main__':
     plt.plot(tiempo, f_)
 
     plt.show()
-
 
     # t=0
     # for point in range(0, len(tiempo), 1):
